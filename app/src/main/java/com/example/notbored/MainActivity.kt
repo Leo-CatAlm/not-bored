@@ -1,8 +1,7 @@
-package com.example.notbored.UI
+package com.example.notbored
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.notbored.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

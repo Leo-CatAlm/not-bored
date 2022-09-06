@@ -16,8 +16,9 @@ class TermActivity : AppCompatActivity() {
         val view = binding.root
 
         binding.ivCancel.setOnClickListener {
-            val backMain= Intent(this, MainActivity::class.java)
-            startActivity(backMain)
+            //val backMain= Intent(this, MainActivity::class.java)
+            //startActivity(backMain)
+            finish()
         }
         setContentView(view)
     }

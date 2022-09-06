@@ -6,7 +6,7 @@ import com.example.notbored.databinding.ActivityDetailsBinding
 import com.example.notbored.databinding.ActivityTermBinding
 
 
-class DetailsActivity : AppCompatActivity() {
+class TypesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

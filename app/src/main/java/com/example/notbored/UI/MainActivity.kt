@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.lifecycle.whenCreated
 import com.example.notbored.R
 import com.example.notbored.databinding.ActivityMainBinding
 
@@ -28,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 !isInteger(numberParticipants.toString())-> Toast.makeText(this,R.string.typeParticipans,Toast.LENGTH_LONG).show()
                 else-> {
                     Toast.makeText(this,R.string.loading,Toast.LENGTH_LONG).show()
-                    val goDetail= Intent(this, DetailsActivity::class.java)
+                    val goDetail= Intent(this, TypesActivity::class.java)
                     goDetail.putExtra("participants",numberParticipants)
                     startActivity(goDetail)
                 }

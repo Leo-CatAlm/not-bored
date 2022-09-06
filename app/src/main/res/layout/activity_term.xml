@@ -4,6 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.termActivity">
+    tools:context=".UI.TermActivity"
+    android:background="@color/background"
+    >
+
+
+    <ImageView
+        android:id="@+id/iv_cancel"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_outline_cancel_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_termconditions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="@string/term"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.5"
+        android:text="@string/notbored"
+        android:textColor="@color/backgroundButton"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_termconditions"
+        app:layout_constraintVertical_bias="0.041" />
+
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="450dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.609"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_textTerm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiispraesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sintoccaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus idquod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut etvoluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapientedelectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellAt vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiispraesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sintoccaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi,id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus idquod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut etvoluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapientedelectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellatat"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

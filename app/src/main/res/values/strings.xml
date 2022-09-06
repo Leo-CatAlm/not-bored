@@ -4,4 +4,7 @@
     <string name="participants">Participants</string>
     <string name="start">Start</string>
     <string name="term">Terms and conditions</string>
+    <string name="emptyParticipans">Empty input</string>
+    <string name="typeParticipans">Don\'t numeric input </string>
+    <string name="loading">Loading </string>
 </resources>

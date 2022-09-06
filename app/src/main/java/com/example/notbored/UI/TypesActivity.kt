@@ -2,6 +2,7 @@ package com.example.notbored.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import com.example.notbored.databinding.ActivityDetailsBinding
 import com.example.notbored.databinding.ActivityTermBinding
 
@@ -20,5 +21,15 @@ class TypesActivity : AppCompatActivity() {
 
         val view = binding.root
         setContentView(view)
+
+        val arrayAdapter: ArrayAdapter<*>
+        val activityTypes = arrayOf(
+            "education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"
+        )
+
+        arrayAdapter = ArrayAdapter(this,
+        android.R.layout.simple_list_item_2, activityTypes)
+
+        binding.lvActivities.adapter = arrayAdapter
     }
 }

@@ -32,6 +32,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.tvTerm.setOnClickListener {
+            val goTerm= Intent(this, TermActivity::class.java)
+            startActivity(goTerm)
+
             //Ir a la otra actividad
         }
 

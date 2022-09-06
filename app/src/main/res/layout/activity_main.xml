@@ -41,7 +41,8 @@
         android:id="@+id/et_number"
         android:layout_width="300dp"
         android:layout_height="30dp"
-        android:background="@color/white"
+        android:background="@drawable/border"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -49,33 +50,33 @@
 
     </androidx.appcompat.widget.AppCompatEditText>
 
+
     <Button
         android:id="@+id/btn_Start"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="112dp"
-        android:text="@string/start"
         android:backgroundTint="@color/backgroundButton"
+        android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_number" />
 
     <TextView
         android:id="@+id/tv_term"
         android:layout_width="wrap_content"
-        android:clickable="true"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
         android:text="@string/term"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_Start"
-        app:layout_constraintVertical_bias="0.204"
-        android:focusable="true" />
+        app:layout_constraintVertical_bias="0.215" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

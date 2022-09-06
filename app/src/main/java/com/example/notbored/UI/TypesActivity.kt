@@ -28,7 +28,7 @@ class TypesActivity : AppCompatActivity() {
         )
 
         arrayAdapter = ArrayAdapter(this,
-        android.R.layout.simple_list_item_2, activityTypes)
+        android.R.layout.simple_list_item_1, activityTypes)
 
         binding.lvActivities.adapter = arrayAdapter
     }

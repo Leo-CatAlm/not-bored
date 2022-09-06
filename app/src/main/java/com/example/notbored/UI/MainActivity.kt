@@ -26,7 +26,12 @@ class MainActivity : AppCompatActivity() {
             when{
                 numberParticipants.isNullOrEmpty()-> Toast.makeText(baseContext,R.string.emptyParticipans,Toast.LENGTH_LONG).show()
                 !isInteger(numberParticipants.toString())-> Toast.makeText(this,R.string.typeParticipans,Toast.LENGTH_LONG).show()
-                else-> Toast.makeText(this,R.string.loading,Toast.LENGTH_LONG).show()
+                else-> {
+                    Toast.makeText(this,R.string.loading,Toast.LENGTH_LONG).show()
+                    val goDetail= Intent(this, DetailsActivity::class.java)
+                    goDetail.putExtra("participants",numberParticipants)
+                    startActivity(goDetail)
+                }
             }
 
         }

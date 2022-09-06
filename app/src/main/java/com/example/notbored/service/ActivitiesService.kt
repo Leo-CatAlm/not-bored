@@ -9,6 +9,6 @@ interface ActivitiesService {
     @GET("/api/activity?participants={participants}")
     fun getRandomActivity(@Path("participants") participants: Int)
 
-    @GET("api/activity?type={activity}&participants={participants}")
+    @GET("/api/activity?type={activity}&participants={participants}")
     fun getActivity(@Path("activity") activity: String, @Path("participants") participants: Int)
 }

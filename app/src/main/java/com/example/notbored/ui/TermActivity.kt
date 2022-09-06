@@ -1,9 +1,7 @@
-package com.example.notbored.UI
+package com.example.notbored.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import com.example.notbored.databinding.ActivityTermBinding
 
 class TermActivity : AppCompatActivity() {

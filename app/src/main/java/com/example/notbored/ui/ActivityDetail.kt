@@ -1,7 +1,6 @@
-package com.example.notbored.UI
+package com.example.notbored.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notbored.databinding.ActivityDetailBinding
 

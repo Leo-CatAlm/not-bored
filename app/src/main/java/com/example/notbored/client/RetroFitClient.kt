@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetroFitClient {
 
-     private const val BASE_URL = "http://www.boredapi.com/"
+      const val BASE_URL = "http://www.boredapi.com/"
 
         fun getInstance(url: String) : ActivitiesService {
             val retrofit = Retrofit.Builder()

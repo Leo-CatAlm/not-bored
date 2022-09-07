@@ -14,6 +14,19 @@
     <string name="price">Price</string>
     <string name="amount">amount</string>
     <string name="try_another">Try another</string>
+    <string name="free">Free</string>
+    <string name="low">Low</string>
+    <string name="Medium">Medium</string>
+    <string name="high">High</string>
+    <string name="cant_tell">Can\'t tell</string>
+
+
+    0 -> tvAmount.text = "Free"
+    1,2,3 -> tvAmount.text = "Low"
+    4,5,6 -> tvAmount.text = "Medium"
+    7,8,9 -> tvAmount.text = "High"
+
+    else -> tvAmount.text = "Can't tell"
 
 
 </resources>

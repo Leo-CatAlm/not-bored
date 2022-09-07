@@ -52,12 +52,12 @@ class TypesActivity : AppCompatActivity() {
             val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getActivity(type, participants)
             val activity: ActivitiesResponse? = call.body()
             if (call.isSuccessful){
-                val goDetail = Intent(parent, ActivityDetail::class.java)
+                //val goDetail = Intent(parent, ActivityDetail::class.java)
                 //TODO: Make ActivitiesResponse Serializable
                 /*goDetail.putExtra("activityType", activity)*/
                 println("Activity $activity")
 
-                startActivity(goDetail)
+                //startActivity(goDetail)
             } else {
                 Log.e("Call", call.errorBody().toString())
             }

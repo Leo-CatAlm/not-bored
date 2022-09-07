@@ -73,7 +73,6 @@ class TypesActivity : AppCompatActivity() {
             val activity: ActivitiesResponse? = call.body()
             if (call.isSuccessful){
                 val goDetail = Intent(this@TypesActivity, ActivityDetail::class.java)
-                //TODO: Make ActivitiesResponse Serializable
                 goDetail.putExtra("activityType", activity)
                 println("Activity $activity")
 

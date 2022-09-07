@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notbored.R
+import com.example.notbored.client.RetroFitClient
 import com.example.notbored.databinding.ActivityDetailBinding
 import com.example.notbored.model.ActivitiesResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ActivityDetail: AppCompatActivity()  {
 
@@ -15,7 +19,12 @@ class ActivityDetail: AppCompatActivity()  {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val numberParticipants = intent.getIntExtra("participants",0)
         val response = intent.getSerializableExtra("activityType") as ActivitiesResponse
+
+        binding.btnTryAnother.setOnClickListener {
+            refreshActivity(numberParticipants)
+        }
 
         if(response.error.equals("Nothing")){
             with(binding){
@@ -37,4 +46,30 @@ class ActivityDetail: AppCompatActivity()  {
         }
 
     }
+ private fun refreshActivity(participants: Int){
+     CoroutineScope(Dispatchers.IO).launch{
+         val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getRandomActivity(participants)
+         val activities: ActivitiesResponse? = call.body()
+         runOnUiThread {
+             if (call.isSuccessful){
+                 with(binding){
+                     if (activities != null) {
+                         tvActivityType.text = activities.type
+                         tvActivityTitle.text = activities.activity
+                         tvNumberOfParticipants.text = activities.participants.toString()
+                     }
+                 }
+             }else{
+                 if (activities != null) {
+                     Toast.makeText(this@ActivityDetail,activities.error,Toast.LENGTH_LONG).show()
+                 }
+             }
+         }
+
+     }
+
+
+ }
+
+
 }

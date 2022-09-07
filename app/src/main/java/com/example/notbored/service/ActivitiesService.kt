@@ -11,5 +11,5 @@ interface ActivitiesService {
     suspend fun getRandomActivity(@Query("participants") participants: Int): Response<ActivitiesResponse>
 
     @GET("api/activity")
-    suspend fun getActivity(@Query("activity") activity: String, @Query("participants") participants: Int): Response<ActivitiesResponse>
+    suspend fun getActivity(@Query("type") activity: String, @Query("participants") participants: Int): Response<ActivitiesResponse>
 }

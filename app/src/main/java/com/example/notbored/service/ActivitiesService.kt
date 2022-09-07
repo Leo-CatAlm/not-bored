@@ -7,9 +7,9 @@ import retrofit2.http.Path
 
 interface ActivitiesService {
 
-    @GET("/api/activity?participants={participants}")
+    @GET("api/activity?participants={participants}")
     suspend fun getRandomActivity(@Path("participants") participants: Int): Response<ActivitiesResponse>
 
-    @GET("/api/activity?type={activity}&participants={participants}")
+    @GET("api/activity?type={activity}&participants={participants}")
     suspend fun getActivity(@Path("activity") activity: String, @Path("participants") participants: Int): Response<ActivitiesResponse>
 }

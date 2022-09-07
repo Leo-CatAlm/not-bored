@@ -22,6 +22,9 @@
             android:name=".ui.TermActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.TypesActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>

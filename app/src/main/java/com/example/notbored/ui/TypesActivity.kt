@@ -6,18 +6,18 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import com.example.notbored.client.RetroFitClient
-import com.example.notbored.databinding.ActivityDetailsBinding
+import com.example.notbored.databinding.ActivityTypesBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
 class TypesActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDetailsBinding
+    private lateinit var binding: ActivityTypesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityDetailsBinding.inflate(layoutInflater)
+        binding= ActivityTypesBinding.inflate(layoutInflater)
 
         val numberParticipants:Int = intent.getStringExtra("participants")?.toInt() ?: 0
 

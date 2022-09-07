@@ -20,11 +20,14 @@ class ActivityDetail: AppCompatActivity()  {
             tvActivityTitle.text = response.activity
             tvNumberOfParticipants.text = response.participants.toString()
 
-            when(response.price){
-                0.0 -> tvPrice.text = "Free"
-                /*0 .. 0.3 -> tvPrice.text = "Low"
-                0 .. 0.3 -> tvPrice.text = "Medium"
-                0 .. 0.3 -> tvPrice.text = "High"*/
+            when((response.price * 10).toInt()){
+
+                0 -> tvAmount.text = "Free"
+                1,2,3 -> tvAmount.text = "Low"
+                4,5,6 -> tvAmount.text = "Medium"
+                7,8,9 -> tvAmount.text = "High"
+
+                else -> tvAmount.text = "Can't tell"
             }
         }
     }

@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import com.example.notbored.client.RetroFitClient
 import com.example.notbored.databinding.ActivityTypesBinding
+import com.example.notbored.model.ActivitiesResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,7 +49,7 @@ class TypesActivity : AppCompatActivity() {
     private fun suggestGivenActivity(type: String, participants: Int){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getActivity(type, participants)
-            val activity = call.body()
+            val activity: ActivitiesResponse? = call.body()
             if (call.isSuccessful){
                 val goDetail = Intent(parent, ActivityDetail::class.java)
                 //TODO: Make ActivitiesResponse Serializable

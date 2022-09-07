@@ -20,8 +20,8 @@ class TypesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityTypesBinding.inflate(layoutInflater)
 
-        val numberParticipants:Int = intent.getStringExtra("participants")?.toInt() ?: 0
-
+        val numberParticipants = intent.getIntExtra("participants",0)
+        println("numberParticipants  $numberParticipants")
 
 
 
@@ -47,6 +47,7 @@ class TypesActivity : AppCompatActivity() {
     }
 
     private fun suggestGivenActivity(type: String, participants: Int){
+        println("type $type $participants")
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getActivity(type, participants)
             val activity: ActivitiesResponse? = call.body()
@@ -54,6 +55,7 @@ class TypesActivity : AppCompatActivity() {
                 val goDetail = Intent(parent, ActivityDetail::class.java)
                 //TODO: Make ActivitiesResponse Serializable
                 /*goDetail.putExtra("activityType", activity)*/
+                println("Activity $activity")
 
                 startActivity(goDetail)
             } else {

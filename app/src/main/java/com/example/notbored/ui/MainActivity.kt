@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 else-> {
                     Toast.makeText(this,R.string.loading,Toast.LENGTH_LONG).show()
                     val goDetail= Intent(this, TypesActivity::class.java)
-                    goDetail.putExtra("participants",numberParticipants)
+                    goDetail.putExtra("participants",numberParticipants.toString().toInt())
                     startActivity(goDetail)
                 }
             }

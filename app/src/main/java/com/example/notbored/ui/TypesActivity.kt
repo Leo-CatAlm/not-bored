@@ -42,8 +42,28 @@ class TypesActivity : AppCompatActivity() {
                 val activityType: String = adapterView.getItemAtPosition(i) as String
                 suggestGivenActivity(activityType, numberParticipants)
             }
+            ivRandom.setOnClickListener {
+                suggestRandomActivity(numberParticipants)
+            }
+
         }
 
+    }
+
+    private fun suggestRandomActivity(participants: Int){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getRandomActivity(participants)
+            val activity: ActivitiesResponse? = call.body()
+            if (call.isSuccessful){
+                val goDetail = Intent(this@TypesActivity, ActivityDetail::class.java)
+                goDetail.putExtra("activityType", activity)
+                println("Activity $activity")
+
+                startActivity(goDetail)
+            } else {
+                Log.e("Call", call.errorBody().toString())
+            }
+        }
     }
 
     private fun suggestGivenActivity(type: String, participants: Int){

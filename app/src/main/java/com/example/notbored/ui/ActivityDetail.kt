@@ -23,7 +23,9 @@ class ActivityDetail: AppCompatActivity()  {
         val response = intent.getSerializableExtra("activityType") as ActivitiesResponse
 
         binding.btnTryAnother.setOnClickListener {
-            refreshActivity(numberParticipants)
+            val typesActivity = TypesActivity()
+            typesActivity.suggestRandomActivity(numberParticipants)
+
         }
 
         if(response.error.equals("Nothing")){
@@ -51,30 +53,31 @@ class ActivityDetail: AppCompatActivity()  {
      * This fun allows the user to get a new activity with the preview parameters that were used to get
      * the first activity
      */
-    private fun refreshActivity(participants: Int){
+/*    private fun refreshActivity(participants: Int){
      CoroutineScope(Dispatchers.IO).launch{
          val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getRandomActivity(participants)
          val activities: ActivitiesResponse? = call.body()
          runOnUiThread {
              if (call.isSuccessful){
                  with(binding){
-                     if (activities != null) {
+
                          tvActivityType.text = activities.type
                          tvActivityTitle.text = activities.activity
                          tvNumberOfParticipants.text = activities.participants.toString()
-                     }
+
                  }
              }else{
                  if (activities != null) {
                      Toast.makeText(this@ActivityDetail,activities.error,Toast.LENGTH_LONG).show()
                  }
+                 }
              }
          }
 
-     }
+     }*/
 
 
  }
 
 
-}
+

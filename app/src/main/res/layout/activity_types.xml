@@ -13,40 +13,40 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundButton"
+        android:background="@drawable/brackground"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:textColor="@color/white"
             android:layout_weight="@integer/material_motion_duration_long_1"
             android:gravity="center_horizontal"
-            android:text="Activities"
+            android:text="@string/activities"
             android:textSize="24sp"
-            android:textStyle="bold"
-
             />
-
-
-        <ImageView
-            android:id="@+id/ivRandom"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/ic_outline_cancel_24"
-            app:srcCompat="@drawable/random" />
-
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivRandom"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/random"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/lvActivities"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="600dp"
+        android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

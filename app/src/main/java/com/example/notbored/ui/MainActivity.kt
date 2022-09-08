@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
 
             val numberParticipants=binding.etNumber.text
             when{
-                numberParticipants.isNullOrEmpty()-> Toast.makeText(baseContext,R.string.empty_participants,Toast.LENGTH_LONG).show()
-                !isInteger(numberParticipants.toString())-> Toast.makeText(this,R.string.type_participants,Toast.LENGTH_LONG).show()
+                numberParticipants.isNullOrEmpty()-> Toast.makeText(baseContext,R.string.empty_participants,Toast.LENGTH_SHORT).show()
+                !isInteger(numberParticipants.toString())-> Toast.makeText(this,R.string.type_participants,Toast.LENGTH_SHORT).show()
                 else-> {
-                    Toast.makeText(this,R.string.loading,Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,R.string.loading,Toast.LENGTH_SHORT).show()
                     val goDetail= Intent(this, TypesActivity::class.java)
                     goDetail.putExtra("participants",numberParticipants.toString().toInt())
                     startActivity(goDetail)

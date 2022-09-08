@@ -52,6 +52,7 @@ class ActivityDetail: AppCompatActivity()  {
     /**
      * This fun allows the user to get a new activity with the preview parameters that were used to get
      * the first activity
+     * @param participants : the number of participants
      */
 /*    private fun refreshActivity(participants: Int){
      CoroutineScope(Dispatchers.IO).launch{

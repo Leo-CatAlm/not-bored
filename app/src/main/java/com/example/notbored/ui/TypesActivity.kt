@@ -53,6 +53,7 @@ class TypesActivity : AppCompatActivity() {
     /**
      * This fun suggest a random activity (as the name says). It receives the number of participants that were given in the previous screen
      * With the Activity that was retrieved the app will send the user to the next screen to see the details
+     * @param participants : the number of participants
      */
     fun suggestRandomActivity(participants: Int){
         CoroutineScope(Dispatchers.IO).launch {
@@ -74,6 +75,8 @@ class TypesActivity : AppCompatActivity() {
      * This fun suggest a given activity (as the name says). It receives the number of participants that were
      * given in the previous screen, and the type of activity given in the current screen.
      * With the Activity that was retrieved the app will send the user to the next screen to see the details
+     * @param participants : the number of participants
+     * @param type :  the type of activity that will be suggested
      */
     private fun suggestGivenActivity(type: String, participants: Int){
         println("type $type $participants")

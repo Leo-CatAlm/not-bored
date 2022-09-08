@@ -67,6 +67,8 @@ class ActivityDetail : AppCompatActivity() {
      * This fun allows the user to get a new activity with the preview parameters that were used to get
      * the first activity
      * @param participants : the number of participants
+     * @param isRandom : check if the intent to get the current activity is from random or not
+     * @param type : get the type of the current activity to recall the api
      */
     private fun refreshActivity(participants: Int, isRandom: Boolean, type: String) {
         CoroutineScope(Dispatchers.IO).launch {

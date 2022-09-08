@@ -1,12 +1,9 @@
 package com.example.notbored.ui
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
-import android.view.View.GONE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet.GONE
 import com.example.notbored.R
 import com.example.notbored.client.RetroFitClient
 import com.example.notbored.databinding.ActivityDetailBinding
@@ -14,7 +11,6 @@ import com.example.notbored.model.ActivitiesResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class ActivityDetail : AppCompatActivity() {
 
@@ -32,18 +28,18 @@ class ActivityDetail : AppCompatActivity() {
             refreshActivity(response.participants,isRandom,response.type)
         }
 
-        if (response.error.equals("Nothing")) {
+        if (response.error=="Nothing") {
             setView(response, isRandom)
         } else {
-            Toast.makeText(this, response.error, Toast.LENGTH_LONG).show()
+            Toast.makeText(this, response.error, Toast.LENGTH_SHORT).show()
             finish()
         }
 
     }
 
-    fun setView(response: ActivitiesResponse, isRandom: Boolean){
+    private fun setView(response: ActivitiesResponse, isRandom: Boolean){
         with(binding) {
-            tvActivityType.text = response.type
+            tvActivityType.text = response.type.uppercase()
             tvActivityTitle.text = response.activity
             tvNumberOfParticipants.text = response.participants.toString()
 
@@ -71,15 +67,14 @@ class ActivityDetail : AppCompatActivity() {
     private fun refreshActivity(participants: Int, isRandom: Boolean, type: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val retrofitInstance = RetroFitClient.getInstance(RetroFitClient.BASE_URL)
-            var call = retrofitInstance.getRandomActivity(participants)
-            when (isRandom) {
+            val call = when(isRandom) {
                 true -> {
-                   call = retrofitInstance.getRandomActivity(participants)
+                    retrofitInstance.getRandomActivity(participants)
 
                 }
                 false -> {
-                    call = retrofitInstance.getActivity(type, participants)
-                    }
+                    retrofitInstance.getActivity(type, participants)
+                }
 
             }
             runOnUiThread {

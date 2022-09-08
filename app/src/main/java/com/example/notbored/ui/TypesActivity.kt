@@ -21,10 +21,6 @@ class TypesActivity : AppCompatActivity() {
         binding= ActivityTypesBinding.inflate(layoutInflater)
 
         val numberParticipants = intent.getIntExtra("participants",0)
-        println("numberParticipants  $numberParticipants")
-
-
-
         val view = binding.root
         setContentView(view)
 
@@ -38,7 +34,7 @@ class TypesActivity : AppCompatActivity() {
 
         with(binding){
             lvActivities.adapter = arrayAdapter
-            lvActivities.setOnItemClickListener { adapterView, view, i, l ->
+            lvActivities.setOnItemClickListener { adapterView,_,i,_  ->
                 val activityType: String = adapterView.getItemAtPosition(i) as String
                 suggestGivenActivity(activityType, numberParticipants)
             }
@@ -55,7 +51,7 @@ class TypesActivity : AppCompatActivity() {
      * With the Activity that was retrieved the app will send the user to the next screen to see the details
      * @param participants : the number of participants
      */
-    fun suggestRandomActivity(participants: Int){
+    private fun suggestRandomActivity(participants: Int){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getRandomActivity(participants)
             val activity: ActivitiesResponse? = call.body()
@@ -79,7 +75,7 @@ class TypesActivity : AppCompatActivity() {
      * @param participants : the number of participants
      * @param type :  the type of activity that will be suggested
      */
-     fun suggestGivenActivity(type: String, participants: Int){
+     private fun suggestGivenActivity(type: String, participants: Int){
         println("type $type $participants")
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getActivity(type, participants)

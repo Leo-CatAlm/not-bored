@@ -10,13 +10,13 @@
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:gravity="center"
-        android:background="#3D87B8">
+        android:background="@drawable/brackground">
 
         <TextView
             android:id="@+id/tvActivityType"
@@ -24,16 +24,17 @@
             android:layout_height="40dp"
             android:layout_margin="16dp"
             android:text="@string/activity_type"
+            android:gravity="center"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="34sp" />
+            android:textColor="@color/white"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvActivityTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_margin="16dp"
         android:text="@string/activity_title"
         app:layout_constraintBottom_toTopOf="@id/linear2"
         android:textSize="20sp"
@@ -68,6 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:padding="3dp"
             android:text="@string/number_of_participants" />
 
     </LinearLayout>
@@ -97,6 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:padding="3dp"
             android:text="@string/amount" />
 
     </LinearLayout>
@@ -116,10 +119,11 @@
 
     <Button
         android:id="@+id/btnTryAnother"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/try_another"
+        android:backgroundTint="@color/backgroundButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRandomType" />

@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * This fun allows us to control if the user put a number or not
+     * @param s : This is what the user write in the participants bar
      */
     fun isInteger(s: String): Boolean {
         return try {

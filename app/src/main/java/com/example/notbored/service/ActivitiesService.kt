@@ -9,12 +9,15 @@ interface ActivitiesService {
 
     /**
      * It retrieves a random activity to the user, only asking for the number of participants
+     * @param participants : the number of participants
      */
     @GET("api/activity")
     suspend fun getRandomActivity(@Query("participants") participants: Int): Response<ActivitiesResponse>
 
     /**
      * It retrieves an activity considering the subject and the number of participants
+     * @param participants : the number of participants
+     * @param type : the type of the activity
      */
     @GET("api/activity")
     suspend fun getActivity(@Query("type") activity: String, @Query("participants") participants: Int): Response<ActivitiesResponse>

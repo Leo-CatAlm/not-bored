@@ -164,33 +164,41 @@ The user install the app and follow the given steps:
     }
     
  //Activity Detail funs
- /**
+     /**
      * This fun allows the user to get a new activity with the preview parameters that were used to get
      * the first activity
      * @param participants : the number of participants
+     * @param isRandom : check if the intent to get the current activity is from random or not
+     * @param type : get the type of the current activity to recall the api
      */
-   private fun refreshActivity(participants: Int){
-     CoroutineScope(Dispatchers.IO).launch{
-         val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getRandomActivity(participants)
-         val activities: ActivitiesResponse? = call.body()
-         runOnUiThread {
-             if (call.isSuccessful){
-                 with(binding){
+    private fun refreshActivity(participants: Int, isRandom: Boolean, type: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val retrofitInstance = RetroFitClient.getInstance(RetroFitClient.BASE_URL)
+            var call = retrofitInstance.getRandomActivity(participants)
+            when (isRandom) {
+                true -> {
+                   call = retrofitInstance.getRandomActivity(participants)
 
-                         tvActivityType.text = activities.type
-                         tvActivityTitle.text = activities.activity
-                         tvNumberOfParticipants.text = activities.participants.toString()
+                }
+                false -> {
+                    call = retrofitInstance.getActivity(type, participants)
+                    }
 
-                 }
-             }else{
-                 if (activities != null) {
-                     Toast.makeText(this@ActivityDetail,activities.error,Toast.LENGTH_LONG).show()
-                 }
-                 }
-             }
-         }
+            }
+            runOnUiThread {
+                if (call.isSuccessful) {
+                    call.body()?.let { setView(it, isRandom) }
+                } else {
+                    Toast.makeText(
+                        this@ActivityDetail,
+                        call.body()?.error ?: "",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
 
-     }
+    }
 ```
 
 # Contributors

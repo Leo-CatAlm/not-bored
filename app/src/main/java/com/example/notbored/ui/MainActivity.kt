@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.example.notbored.R
 import com.example.notbored.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +25,12 @@ class MainActivity : AppCompatActivity() {
      */
     fun setListeners(){
         binding.btnStart.setOnClickListener {
-
+            val checkBox = binding.cbTermsAndConditions
             val numberParticipants=binding.etNumber.text
             when{
                 numberParticipants.isNullOrEmpty()-> Toast.makeText(baseContext,R.string.empty_participants,Toast.LENGTH_SHORT).show()
                 !isInteger(numberParticipants.toString())-> Toast.makeText(this,R.string.type_participants,Toast.LENGTH_SHORT).show()
+                !checkBox.isChecked -> Toast.makeText(this,R.string.must_accept_terms,Toast.LENGTH_SHORT).show()
                 else-> {
                     Toast.makeText(this,R.string.loading,Toast.LENGTH_SHORT).show()
                     val goDetail= Intent(this, TypesActivity::class.java)

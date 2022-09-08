@@ -20,6 +20,8 @@
     <string name="high">High</string>
     <string name="cant_tell">Can\'t tell</string>
     <string name="activities">Activities</string>
+    <string name="accept_terms_and_conditions">Accept?</string>
+    <string name="must_accept_terms">You must accept terms and conditions</string>
 
 
     0 -> tvAmount.text = "Free"

@@ -46,7 +46,12 @@ class ActivityDetail: AppCompatActivity()  {
         }
 
     }
- private fun refreshActivity(participants: Int){
+
+    /**
+     * This fun allows the user to get a new activity with the preview parameters that were used to get
+     * the first activity
+     */
+    private fun refreshActivity(participants: Int){
      CoroutineScope(Dispatchers.IO).launch{
          val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getRandomActivity(participants)
          val activities: ActivitiesResponse? = call.body()

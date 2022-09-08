@@ -8,6 +8,10 @@ object RetroFitClient {
 
       const val BASE_URL = "http://www.boredapi.com/"
 
+    /**
+     * Executes a call from the app to boredapi.
+     * By using the methods in the retrofit interface to choose between a random activity type, and a given activity type
+     */
         fun getInstance(url: String) : ActivitiesService {
             val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)

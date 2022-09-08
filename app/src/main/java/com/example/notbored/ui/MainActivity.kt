@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
     }
 
+    /**
+     * Set the listeners of the start button and the terms hyperText.
+     *  - The start buttons retrieve messages in case the user don't give a number of participants or gives it with a wrong format
+     *  - The terms hyperText send the user to a screen with everything that the user should accept to continue
+     */
     fun setListeners(){
         binding.btnStart.setOnClickListener {
 
@@ -43,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    /**
+     * This fun allows us to control if the user put a number or not
+     */
     fun isInteger(s: String): Boolean {
         return try {
             s.toInt()

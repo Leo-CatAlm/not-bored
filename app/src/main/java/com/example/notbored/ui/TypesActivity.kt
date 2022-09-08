@@ -62,6 +62,7 @@ class TypesActivity : AppCompatActivity() {
             if (call.isSuccessful){
                 val goDetail = Intent(this@TypesActivity, ActivityDetail::class.java)
                 goDetail.putExtra("activityType", activity)
+                goDetail.putExtra("isRandom", true)
                 println("Activity $activity")
 
                 startActivity(goDetail)
@@ -78,7 +79,7 @@ class TypesActivity : AppCompatActivity() {
      * @param participants : the number of participants
      * @param type :  the type of activity that will be suggested
      */
-    private fun suggestGivenActivity(type: String, participants: Int){
+     fun suggestGivenActivity(type: String, participants: Int){
         println("type $type $participants")
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getActivity(type, participants)
@@ -86,6 +87,7 @@ class TypesActivity : AppCompatActivity() {
             if (call.isSuccessful){
                 val goDetail = Intent(this@TypesActivity, ActivityDetail::class.java)
                 goDetail.putExtra("activityType", activity)
+                goDetail.putExtra("isRandom", false)
                 println("Activity $activity")
 
                 startActivity(goDetail)

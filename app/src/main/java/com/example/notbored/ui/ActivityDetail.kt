@@ -1,8 +1,12 @@
 package com.example.notbored.ui
 
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
+import android.view.View.GONE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet.GONE
 import com.example.notbored.R
 import com.example.notbored.client.RetroFitClient
 import com.example.notbored.databinding.ActivityDetailBinding
@@ -10,8 +14,9 @@ import com.example.notbored.model.ActivitiesResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
-class ActivityDetail: AppCompatActivity()  {
+class ActivityDetail : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,32 +24,41 @@ class ActivityDetail: AppCompatActivity()  {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val numberParticipants = intent.getIntExtra("participants",0)
+
         val response = intent.getSerializableExtra("activityType") as ActivitiesResponse
-
+        val isRandom = intent.getBooleanExtra("isRandom", false)
         binding.btnTryAnother.setOnClickListener {
-            val typesActivity = TypesActivity()
-            typesActivity.suggestRandomActivity(numberParticipants)
 
+            refreshActivity(response.participants,isRandom,response.type)
         }
 
-        if(response.error.equals("Nothing")){
-            with(binding){
-                tvActivityType.text = response.type
-                tvActivityTitle.text = response.activity
-                tvNumberOfParticipants.text = response.participants.toString()
-
-                when((response.price.times(10)).toInt()){
-                    0 -> tvAmount.setText(R.string.free)
-                    1,2,3 -> tvAmount.setText(R.string.low)
-                    4,5,6 -> tvAmount.setText(R.string.Medium)
-                    7,8,9 -> tvAmount.setText(R.string.high)
-                    else -> tvAmount.setText(R.string.cant_tell)
-                }
-            }
-        }else{
-            Toast.makeText(this,response.error,Toast.LENGTH_LONG).show()
+        if (response.error.equals("Nothing")) {
+            setView(response, isRandom)
+        } else {
+            Toast.makeText(this, response.error, Toast.LENGTH_LONG).show()
             finish()
+        }
+
+    }
+
+    fun setView(response: ActivitiesResponse, isRandom: Boolean){
+        with(binding) {
+            tvActivityType.text = response.type
+            tvActivityTitle.text = response.activity
+            tvNumberOfParticipants.text = response.participants.toString()
+
+            if (isRandom){
+                tvRandomType.visibility = View.VISIBLE
+                tvRandomType.text = response.type
+            }
+
+            when ((response.price.times(10)).toInt()) {
+                0 -> tvAmount.setText(R.string.free)
+                1, 2, 3 -> tvAmount.setText(R.string.low)
+                4, 5, 6 -> tvAmount.setText(R.string.Medium)
+                7, 8, 9 -> tvAmount.setText(R.string.high)
+                else -> tvAmount.setText(R.string.cant_tell)
+            }
         }
 
     }
@@ -53,31 +67,37 @@ class ActivityDetail: AppCompatActivity()  {
      * This fun allows the user to get a new activity with the preview parameters that were used to get
      * the first activity
      */
-/*    private fun refreshActivity(participants: Int){
-     CoroutineScope(Dispatchers.IO).launch{
-         val call = RetroFitClient.getInstance(RetroFitClient.BASE_URL).getRandomActivity(participants)
-         val activities: ActivitiesResponse? = call.body()
-         runOnUiThread {
-             if (call.isSuccessful){
-                 with(binding){
+    private fun refreshActivity(participants: Int, isRandom: Boolean, type: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val retrofitInstance = RetroFitClient.getInstance(RetroFitClient.BASE_URL)
+            var call = retrofitInstance.getRandomActivity(participants)
+            when (isRandom) {
+                true -> {
+                   call = retrofitInstance.getRandomActivity(participants)
 
-                         tvActivityType.text = activities.type
-                         tvActivityTitle.text = activities.activity
-                         tvNumberOfParticipants.text = activities.participants.toString()
+                }
+                false -> {
+                    call = retrofitInstance.getActivity(type, participants)
+                    }
 
-                 }
-             }else{
-                 if (activities != null) {
-                     Toast.makeText(this@ActivityDetail,activities.error,Toast.LENGTH_LONG).show()
-                 }
-                 }
-             }
-         }
+            }
+            runOnUiThread {
+                if (call.isSuccessful) {
+                    call.body()?.let { setView(it, isRandom) }
+                } else {
+                    Toast.makeText(
+                        this@ActivityDetail,
+                        call.body()?.error ?: "",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
 
-     }*/
+    }
 
 
- }
+}
 
 
 
